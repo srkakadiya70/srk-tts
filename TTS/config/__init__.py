@@ -5,7 +5,11 @@ from typing import Any, Union, cast
 
 import fsspec
 import yaml
-from coqpit import Coqpit
+# Try importing coqpit, fall back to coqpit-config
+try:
+    from coqpit import Coqpit
+except ImportError:
+    from coqpit_config import Coqpit
 
 from TTS.config.shared_configs import BaseAudioConfig, BaseDatasetConfig, BaseTrainingConfig
 from TTS.utils.generic_utils import find_module
