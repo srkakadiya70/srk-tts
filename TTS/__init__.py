@@ -2,7 +2,10 @@ import importlib.metadata
 
 from TTS.utils.generic_utils import is_pytorch_at_least_2_4
 
-__version__ = importlib.metadata.version("TTS")
+try:
+    __version__ = importlib.metadata.version("SK-TTS")
+except importlib.metadata.PackageNotFoundError:
+    __version__ = "0.0.0"
 
 if "coqpit" in importlib.metadata.packages_distributions().get("coqpit", []):
     msg = (
